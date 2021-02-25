@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>hello vue</title>
+        <script src="js/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            {{message}}
+            <p>{{rahtml}}</p>
+            <p v-html="rahtml"></p>
+            <a v-bind:[name]="url">百度链接</a>
+            <p>{{reverseMessage}}</p>
+            <button v-on:[name2]="alerFun">{{name2}} me</button>
+        </div>
+    </body>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue jessica!',
+                rahtml: '<h1>33</h1>',
+                url: 'http://baidu.com',
+                name: 'href',
+                name2: 'click'
+            },
+            computed: {
+                reverseMessage: function() {
+                    return this.message.split('').reverse().join('');
+                }
+            },
+            methods: {
+                alerFun: function(){
+                    alert(this.name2);
+                }
+            }
+        })
+    </script>
+</html>

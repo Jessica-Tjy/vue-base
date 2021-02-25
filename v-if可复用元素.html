@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>v-if可复用元素</title>
+        <script src="js/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <template v-if="loginType === 'username'">
+                <label>Username</label>
+                <input placeholder="Enter your username" key="username-input">
+              </template>
+              <template v-else>
+                <label>Email</label>
+                <input placeholder="Enter your email address" key="email-input" >
+              </template>
+              <p>
+                  <button @click="loginTypeFun">toggle login type</button>
+              </p>
+              <p v-show='ok'>v-show</p>
+        </div>
+        
+    </body>
+    <script>
+        // Vue.component('templatec', {
+        //     template: '#cc'
+        // });
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                 loginType: 'username',
+                 ok: false
+            },
+            methods: {
+                loginTypeFun: function() {
+                    if(this.loginType === 'username') {
+                        this.loginType = '';
+                    } else {
+                        this.loginType = 'username';
+                    }
+                        
+                }
+            }
+        })
+        
+    </script>
+</html>

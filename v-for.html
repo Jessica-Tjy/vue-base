@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>v-for</title>
+        <script src="js/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <h2>列表一</h2>
+            <ul>
+                <li v-for="n in evenNumber">{{n}}</li>
+            </ul>
+            <h2>列表二</h2>
+            <ul>
+                <li v-for="n2 in numbers2">{{n2}}</li>
+            </ul>
+            <p>
+                <button @click="evenFun">even num</button>
+                <button @click="cancelFun">cansel</button>
+            </p>
+            <ul v-for="set in sets">
+                <li v-for="n3 in evenFun2(set)">{{n3}}</li>
+            </ul>
+        </div>
+        
+    </body>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                numbers: [ 1, 2, 3, 4, 5 ],
+                numbers2: [ 1, 2, 3, 4, 5 ],
+                sets: [[ 1, 2, 3, 4, 5 ], [6, 7, 8, 9, 10]]
+            },
+            computed: {
+                evenNumber: function() {
+                    return this.numbers.filter(function (number) {
+                        return number % 2 === 0
+                    })
+                        
+                }
+            },
+            methods: {
+                evenFun: function() {
+                    this.numbers2 = this.numbers2.filter(function (number) {
+                        return number % 2 === 0
+                    })
+                },
+                cancelFun: function() {
+                    this.numbers2 = this.numbers;
+                },
+                evenFun2: function(numbers) {
+                    return numbers.filter(function (number) {
+                        return number % 2 === 0
+                    })
+                }
+            }
+        })
+        
+    </script>
+</html>

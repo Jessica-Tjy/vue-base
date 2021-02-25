@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>v-for和template</title>
+        <script src="js/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <template v-for="n in 3">
+                <div>eeeeee</div>
+            </template>
+        </div>
+        <template id="temp">
+            <p>我是template</p>
+        </template>
+        
+    </body>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                
+            },
+            methods: {
+            }
+            // template: 'temp'
+        })
+        
+    </script>
+</html>
